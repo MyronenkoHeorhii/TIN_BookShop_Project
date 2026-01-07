@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+    <div class="bg"></div>
+    <div class="editFormDiv">
+        <h1 class="text">Login</h1>
+        <form action="/login" method="post">
+            <label>
+                <br><a class="profileFields">Email</a>
+                <br><input type="text" id="email" name="email" placeholder="email">
+                <br><a class="profileFields">Password</a>
+                <br><input type="password" id="password" name="password" placeholder="password">
+
+                <br>
+                <button style="margin-top: 5px" type="submit" class="cancelButton">
+                    <img src="confirmIcon.png" class="confirmIcon" alt="Login">
+                </button>
+                <% if (error) { %>
+                    <br><p name="error" class="error"><%= error %></p>
+                <% } %>
+
+            </label>
+        </form>
+    </div>
+</body>
+</html>

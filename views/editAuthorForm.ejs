@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/frontend.js"></script>
+    <style>
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+
+<form>
+    <% if(row) {%>
+        <label>
+            <br><a>Author Id</a>
+            <br><input type="number" id="Id" name="id" placeholder="Book Id" value="<%= row.authorId %>">
+            <br><a>Name</a>
+            <br><input type="text" id="authorName" name="authorName" placeholder="authorName" value="<%= row.authorName %>">
+            <br><a>Last Name</a>
+            <br><input type="text" id="LastName" name="lastName" placeholder="LastName" value="<%= row.LastName %>">
+
+            <br><input type="hidden" id="previousId" name="previousId" value="<%= row.authorId %>">
+
+            <br><input type="button" value="Confirm" onclick="validateAuthorEdit()">
+
+            <br><a href="/authorList">
+                <button type="button">Cancel</button>
+            </a>
+
+            <p id="error" class="error"></p>
+
+            <% if (error) { %>
+                <br><p name="error" class="error"><%= error %></p>
+            <% } %>
+
+        </label>
+    <%}%>
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/frontend.js"></script>
+    <style>
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+
+<form>
+        <label>
+            <br><a>Title</a>
+            <br><input type="text" id="Title" name="title" placeholder="Title">
+            <br><a>Genre</a>
+            <br><input type="text" id="Genre" name="genre" placeholder="Genre">
+            <br><a>Author id</a>
+            <br><input type="number" id="Author" name="author" placeholder="Author">
+            <br><a>Price</a>
+            <br><input type="number" id="Price" name="price" placeholder="Price">
+            <br><a>Img url</a>
+            <br><input type="text" id="img" name="img" placeholder="Img url">
+
+            <br><input type="button" value="Confirm" onclick="validateCreateBook()">
+
+            <br><a href="/books">
+                <button type="button">Cancel</button>
+            </a>
+
+            <p id="error" class="error"></p>
+
+            <% if (error) { %>
+                <br><p name="error" class="error"><%= error %></p>
+            <% } %>
+
+        </label>
+</form>
+</body>
+</html>

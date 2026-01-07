@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+    <body style="text-align: center">
+
+        <h1>Customers</h1>
+
+        <% if (error) { %>
+            <br><a class="error"><%= error %></a>
+        <% } %>
+
+        <table id="booksTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Admin</th>
+            </tr>
+            </thead>
+
+            <tbody id="tableBody">
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><%= row.customerId%></td>
+                    <td><%= row.Name%></td>
+                    <td><%= row.LastName%></td>
+                    <td><%= row.email%></td>
+                    <td><%= row.password%></td>
+                    <td><form action="/removeCustomer/<%= row.customerId%>" method="post"><input type="submit" value="Remove"></form></td>
+                    <td><form action="/editCustomerForm/<%= row.customerId%>" method="get"><input type="submit" value="Edit"></form></td>
+                    <!-- action="/edit/<%= row.id %>" method="get" for the button* -->
+                    <!--        <td><form action="/edit/<%= row.id %>" method="get"><input type="submit" value="EDIT"></form></td>-->
+                </tr>
+            <%  }); %>
+            </tbody>
+
+        </table>
+        <form action="/createCustomerForm" method="get"><input type="submit" value="Create Customer"></form>
+    </body>
+</html>

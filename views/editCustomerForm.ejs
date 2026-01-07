@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/frontend.js"></script>
+    <style>
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+
+    <h1>Edit customer</h1>
+
+    <form>
+        <% if(row) {%>
+            <label>
+                <br><a>Customer id</a>
+                <br><input type="number" id="Id" name="id" placeholder="customer Id" value="<%= row.customerId %>">
+
+                <br><a>Name</a>
+                <br><input type="text" id="Name" name="name" placeholder="First name" value="<%= row.Name %>">
+
+                <br><a>Last Name</a>
+                <br><input type="text" id="LastName" name="lastName" placeholder="Last name" value="<%= row.LastName %>">
+
+                <br><a>Email</a>
+                <br><input type="text" id="email" name="email" placeholder="Email" value="<%= row.email %>">
+
+                <br><a>Password</a>
+                <br><input type="text" id="password" name="password" placeholder="Password" value="<%= row.password %>">
+
+                <br><input type="hidden" id="previousIdId" name="previousId" value="<%= row.customerId %>">
+
+                <br><input type="button" value="Confirm" onclick="validateCustomerEdit()">
+
+                <br><a href="/customersList">
+                    <button type="button">Cancel</button>
+                </a>
+
+                <p id="error" class="error"></p>
+
+                <% if (error) { %>
+                    <br><p name="error" class="error"><%= error %></p>
+                <% } %>
+
+            </label>
+        <%}%>
+    </form>
+</body>
+</html>

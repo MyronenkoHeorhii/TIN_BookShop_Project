@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+
+    <h1>Authors list</h1>
+
+    <% if (error) { %>
+        <br><a class="error"><%= error %></a>
+    <% } %>
+
+    <table id="booksTable">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>LastName</th>
+        </tr>
+        </thead>
+
+        <tbody id="tableBody">
+        <% rows.forEach(row => { %>
+            <tr>
+                <td><%= row.authorId%></td>
+                <td><%= row.authorName%></td>
+                <td><%= row.LastName%></td>
+                <td><form action="/editAuthorForm/<%= row.authorId%>" method="get"><input type="submit" value="edit"></form></td>
+                <td><form action="/removeAuthor/<%= row.authorId%>" method="post"><input type="submit" value="Remove"></form></td>
+            </tr>
+        <%  }); %>
+        </tbody>
+
+    </table>
+
+    <form action="/createAuthorForm" method="get"><input type="submit" value="Create Author"></form>
+
+    <form action="/books" method="get">
+        <input type="submit" value="Back to Books">
+    </form>
+</body>
+</html>

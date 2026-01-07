@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/frontend.js"></script>
+    <style>
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+
+<form>
+    <label>
+        <br><a>Name</a>
+        <br><input type="text" id="Name" name="name" placeholder="Name">
+        <br><a>LastName</a>
+        <br><input type="text" id="LastName" name="lastName" placeholder="LastName">
+        <br><a>Email</a>
+        <br><input type="text" id="Email" name="email" placeholder="Email">
+        <br><a>Password</a>
+        <br><input type="text" id="Password" name="password" placeholder="Password">
+        <br><a>Admin status</a>
+        <br><input type="checkbox" id="Admin" name="admin" placeholder="Admin status">
+
+        <br><input type="button" value="Confirm" onclick="validateCreateCustomer()">
+
+        <br><a href="/books">
+            <button type="button">Cancel</button>
+        </a>
+
+        <p id="error" class="error"></p>
+
+        <% if (error) { %>
+            <br><p name="error" class="error"><%= error %></p>
+        <% } %>
+
+    </label>
+</form>
+</body>
+</html>

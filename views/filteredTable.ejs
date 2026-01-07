@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+<h1>Made by author <%= author %></h1>
+<table id="booksTable">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Author</th>
+    </tr>
+    </thead>
+
+    <tbody id="tableBody">
+    <% rows.forEach(row => { %>
+        <tr>
+            <td><%= row.Title%></td>
+            <td><%= row.Genre%></td>
+            <td><%= row.authorName%></td>
+        </tr>
+    <%  }); %>
+    </tbody>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        #image{
+            height: 150px;
+            width: 100px;
+        }
+
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+    <div class="bg"></div>
+
+    <form action="/books" method="get">
+        <button type="submit" class="backButton">
+            <img src="backIcon.png" class="backIcon" alt="Back">
+        </button>
+    </form>
+
+    <form action="/profile" method="get">
+        <button type="submit" class="profileButton">
+            <img src="profileIcon.png" alt="Profile" class="profileIcon">
+        </button>
+    </form>
+
+    <h1 class="text">Total: <%= total %></h1>
+
+    <% if (error) { %>
+        <br><a class="error"><%= error %></a>
+    <% } %>
+
+    <table id="booksTable">
+        <thead>
+        <tr>
+            <th>img</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Author</th>
+            <th>Date of addition</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+
+        <tbody id="tableBody">
+        <% rows.forEach(row => { %>
+            <tr>
+                <td><img src="<%= row.img%>" id="image" alt="missing image"></td>
+                <td><%= row.Title%></td>
+                <td><%= row.Genre%></td>
+                <td><a href='/filtered/<%= row.authorName %>'><%= row.authorName%></a></td>
+                <td><%= row.additionDate%></td>
+                <td><%= row.price %> zł</td>
+                <td>
+                    <form action="/cart/<%=row.cartId%>" method="post">
+                        <button type="submit" class="removeButton">
+                            <img src="/removeIcon.png" alt="Remove" class="removeIcon">
+                        </button>
+                    </form>
+                </td>
+                <!-- action="/edit/<%= row.id %>" method="get" -->
+                <!--        <td><form action="/edit/<%= row.id %>" method="get"><input type="submit" value="EDIT"></form></td>-->
+            </tr>
+        <%  }); %>
+        </tbody>
+
+    </table>
+</body>
+</html>

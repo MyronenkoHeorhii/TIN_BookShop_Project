@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+<div class="bg"></div>
+
+<form action="/cart" method="get">
+    <button type="submit" class="backButton">
+        <img src="backIcon.png" class="backIcon" alt="Back">
+    </button>
+</form>
+
+<h1 class="text">Profile of <%= row.Name %></h1>
+
+<% if (error) { %>
+    <br><a class="error"><%= error %></a>
+<% } %>
+
+<div class="profileDiv">
+    <% if (row) {%>
+        <br>Name: <a class="profileFields"> <%= row.Name %> </a>
+        <br>Last name: <a class="profileFields"> <%= row.LastName %> </a>
+        <br>Email: <a class="profileFields"> <%= row.email %> </a>
+    <%}%>
+
+    <!-- will do stuff -->
+    <form action="/editProfile" method="get">
+        <button type="submit" class="editButton">
+            <img src="editIcon.png" alt="Edit" class="editIcon">
+        </button>
+
+    </form>
+</div>
+
+</body>
+</html>

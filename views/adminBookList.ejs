@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        #image{
+            height: 150px;
+            width: 100px;
+        }
+
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+<div class="bg"></div>
+
+<% if (error) { %>
+    <br><a class="error"><%= error %></a>
+<% } %>
+
+<table id="booksTable">
+    <thead>
+    <tr>
+        <th>img</th>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Author</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+
+    <tbody id="tableBody">
+    <% rows.forEach(row => { %>
+        <tr>
+            <td><img src="<%= row.img%>" id="image" alt="missing image"></td>
+            <td><%= row.bookId%></td>
+            <td><%= row.Title%></td>
+            <td><%= row.Genre%></td>
+            <td>
+                <% if (row.authorName) {%>
+                    <a href='/filtered/<%= row.authorName %>'><%= row.authorName%></a>
+                <%}else{%>
+                    <a>Unknown Author</a>
+                <%}%>
+            </td>
+            <td><%= row.price%> zł</td>
+            <td><form action="/editBookForm/<%= row.bookId%>" method="get"><input type="submit" value="edit"></form></td>
+            <td><form action="/removeBook/<%= row.bookId%>" method="post"><input type="submit" value="Remove"></form></td>
+        </tr>
+    <%  }); %>
+    </tbody>
+
+</table>
+
+<form action="/createBookForm" method="get">
+    <input type="submit" value="Create Book">
+</form>
+</body>
+</html>

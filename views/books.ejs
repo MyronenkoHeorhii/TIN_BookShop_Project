@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+/*
+        table{
+            margin-left: 35%;
+            margin-top: 10%;
+        }
+*/
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+    
+    <body style="text-align: center">
+    <div class="bg"></div>
+
+    <form action="/cart" method="get">
+        <button type="submit" class="cartButton">
+            <img class="cartIcon" src="cartIcon.png" alt="Shopping cart">
+        </button>
+    </form>
+
+    <form action="/logout" method="get">
+        <button type="submit" class="backButton">
+            <img class="backIcon" src="logoutIcon.png" alt="Logout">
+        </button>
+    </form>
+
+        <% if (error) { %>
+            <br><a class="error"><%= error %></a>
+        <% } %>
+
+        <table id="booksTable">
+            <thead>
+            <tr>
+                <th>img</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Author</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+
+            <tbody id="tableBody">
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><img src="<%= row.img%>" id="image" alt="missing image"></td>
+                    <td><%= row.Title%></td>
+                    <td><%= row.Genre%></td>
+                    <td>
+                        <% if (row.authorName) {%>
+                            <a href='/filtered/<%= row.authorName %>'><%= row.authorName%></a>
+                        <%}else{%>
+                            <a>Unknown Author</a>
+                        <%}%>
+                    </td>
+
+                    <td><%= row.price%> zł</td>
+                    <td><form action="/book/<%= row.bookId %>" method="post"><input type="submit" value="Add"></form></td>
+                    <!-- action="/edit/<%= row.id %>" method="get" for the button* -->
+            <!--        <td><form action="/edit/<%= row.id %>" method="get"><input type="submit" value="EDIT"></form></td>-->
+                </tr>
+            <%  }); %>
+            </tbody>
+
+        </table>
+    </body>
+</html>
