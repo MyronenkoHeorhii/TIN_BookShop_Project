@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
     <style>
         input{
             margin-top: 3px;
@@ -10,26 +11,35 @@
     </style>
 </head>
 <body style="text-align: center">
-<h1>Made by author <%= author %></h1>
-<table id="booksTable">
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Genre</th>
-        <th>Author</th>
-    </tr>
-    </thead>
 
-    <tbody id="tableBody">
-    <% rows.forEach(row => { %>
+    <div class="bg"></div>
+    <h1 style="color: aliceblue">Made by author <%= author %></h1>
+
+    <form action="/books" method="get">
+        <button type="submit" class="backButton">
+            <img src="/backIcon.png" class="backIcon" alt="Back">
+        </button>
+    </form>
+
+    <table id="booksTable">
+        <thead>
         <tr>
-            <td><%= row.Title%></td>
-            <td><%= row.Genre%></td>
-            <td><%= row.authorName%></td>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Author</th>
         </tr>
-    <%  }); %>
-    </tbody>
+        </thead>
 
-</table>
+        <tbody id="tableBody">
+        <% rows.forEach(row => { %>
+            <tr>
+                <td><%= row.Title%></td>
+                <td><%= row.Genre%></td>
+                <td><%= row.authorName%></td>
+            </tr>
+        <%  }); %>
+        </tbody>
+
+    </table>
 </body>
 </html>
